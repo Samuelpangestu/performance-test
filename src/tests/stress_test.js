@@ -1,6 +1,6 @@
 import { Counter, Rate } from "k6/metrics"; // Import metrics
 import { STRESS_TEST } from "../config/test_options.js";
-import { BaseTest } from "../core/BaseTest.js";
+import { BaseTest } from "../config/base_test.js";
 import { ENDPOINTS } from "../sources/endpoints.js";
 import { handleReport } from "../utils/reportHandler.js";
 

@@ -1,8 +1,11 @@
-import { Counter, Rate } from "k6/metrics"; // Import metrics
+import { Counter, Rate } from "k6/metrics";
 import { SMOKE_TEST } from "../config/test_options.js";
-import { BaseTest } from "../core/BaseTest.js";
-import { ENDPOINTS } from "../endpoints/sample_endpoint.js";
 import { handleReport } from "../utils/reportHandler.js";
+import { BaseTest } from "../config/base_test.js";
+
+// Load dynamic endpoints based on __ENV.ENDPOINT_SOURCE
+const endpointSource = __ENV.ENDPOINT_SOURCE || "default";
+const { ENDPOINTS } = require(`../endpoints/${endpointSource}/sample_endpoint.js`);
 
 // Define custom metrics globally
 export const tps = new Counter("tps");
@@ -18,7 +21,7 @@ SMOKE_TEST.thresholds = {
 export let options = SMOKE_TEST;
 
 export default function () {
-  const test = new BaseTest(ENDPOINTS.DATA); // Initialize BaseTest
+  const test = new BaseTest(ENDPOINTS.DATA); // Initialize BaseTest with dynamic ENDPOINTS
   const response = test.sendRequest("", "GET");
 
   // Record metrics
@@ -34,5 +37,7 @@ export default function () {
 
 // Centralized report generation
 export function handleSummary(data) {
-  return handleReport(data, "smoke_test_report");
+  // Dynamically generate the report name based on the endpoint source
+  const reportName = `${endpointSource}_sample_endpoint_smoke`;
+  return handleReport(data, reportName);
 }

@@ -1,7 +1,7 @@
 import { Counter, Rate } from "k6/metrics"; // Import metrics
-import { MINIMAL_TEST, SMOKE_TEST } from "../config/test_options.js";
-import { BaseTest } from "../core/BaseTest.js";
-import { ENDPOINTS } from "../endpoints/sample_endpoint.js";
+import { MINIMAL_TEST, SMOKE_TEST } from "../test_config/test_options.js";
+import { BaseTest } from "../test_config/core/BaseTest.js";
+import { ENDPOINTS } from "../endpoints/inagov/sample_endpoint.js";
 import { handleReport } from "../utils/reportHandler.js";
 
 // Define custom metrics globally
