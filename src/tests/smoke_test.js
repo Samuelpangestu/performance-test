@@ -1,7 +1,7 @@
 import { Counter, Rate } from "k6/metrics"; // Import metrics
 import { SMOKE_TEST } from "../config/test_options.js";
 import { BaseTest } from "../core/BaseTest.js";
-import { ENDPOINTS } from "../sources/endpoints.js";
+import { ENDPOINTS } from "../endpoints/sample_endpoint.js";
 import { handleReport } from "../utils/reportHandler.js";
 
 // Define custom metrics globally
