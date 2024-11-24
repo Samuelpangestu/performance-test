@@ -1,0 +1,20 @@
+{
+  "name": "inadigital-performance-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "smoke": "k6 run src/tests/smoke_test.js",
+    "load": "k6 run src/tests/load_test.js",
+    "stress": "k6 run src/tests/stress_test.js",
+    "soak": "k6 run src/tests/soak_test.js",
+    "breakpoint": "k6 run src/tests/breakpoint_test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "k6": "^0.0.0"
+  },
+  "keywords": [],
+  "description": ""
+}
